@@ -1,0 +1,276 @@
+/* 红色 */
+.red {
+  color: #f4615c;
+}
+
+.blue {
+  color: #477bf7;
+}
+
+/* 浅蓝色 icon */
+.light-blue-icon {
+  font-size: 16px;
+  font-weight: bold;
+  color: #477bf7;
+  cursor: pointer;
+}
+.pink {
+  color:#F581B1;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-cm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* text-align */
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr15 {
+  margin-right: 15px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.mr30 {
+  margin-right: 30px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb18 {
+  margin-bottom: 18px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.p15 {
+  padding: 15px;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.p5 {
+  padding: 5px;
+}
+
+.ptm10 {
+  padding: 10px 0;
+}
+.pt10 {
+  padding-top: 10px;
+}
+
+.ova {
+  overflow: auto;
+}
+
+.vm {
+  vertical-align: middle;
+}
+.ell {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+/* cursor */
+.poi {
+  cursor: pointer;
+}
+.f16 {
+  font-size: 16px;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.f22 {
+  font-size: 22px;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: "";
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* tip content布局 */
+.tip-contact-phone {
+  display: inline-block;
+  width: 100px;
+}
+
+/* 拖动CSS样式 左右 */
+.custom-drawer-resize-lr {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+}
+
+/* 拖动CSS样式 上下 */
+.custom-drawer-resize-tb {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+}
+
+.wh20 {
+  width: 20px;
+  height: 20px;
+}
+
+/* 容器列表布局 */
+.list-wrap {
+  padding: 10px;
+}
+
+/* 自定义dialog-footer */
+.dialog___footer {
+  padding-top: 10px;
+  text-align: right;
+  border-top: 1px solid #dcdfe6;
+}
+
+.IE-MessageBox {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+/* 表格拖拽样式 */
+.sortable-ghost {
+  background-color: #dfecfb;
+  cursor: move;
+}
+
+.w100px {
+  width: 100px !important;
+}
+.w120px {
+  width: 120px !important;
+}
+.w130px {
+  width: 130px !important;
+}
+.w140px {
+  width: 140px !important;
+}
+.w180px {
+  width: 180px !important;
+}
+.w200px {
+  width: 200px !important;
+}
+.w240px {
+  width: 240px !important;
+}
+.w260px {
+  width: 260px !important;
+}
+.w280px {
+  width: 280px !important;
+}
+
+/* quill rich text 预览设置图片大小 */
+.quill-preview img {
+  max-width: 100%;
+}
+
+/*vxe table toolbar*/
+.vxe-toolbar {
+  height: auto !important;
+}
+
+.vxe-custom--wrapper {
+  margin-bottom: 10px;
+  margin-left: 0 !important;
+}
+
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409EFF;
+}
+
+.search-form {
+  .el-form-item--mini.el-form-item,
+  .el-form-item--small.el-form-item {
+    margin-bottom: 10px;
+  }
+}
+
