@@ -4,10 +4,10 @@
     <template #header>
       <simple-search :search-columns="searchColumns" @query-search="querySearch">
         <search-item>
-          <base-button :checked-length="checkedData.length " @click="openEditPOST()">编辑</base-button>
+          <base-button :checked-length="checkedData.length " @click="openEdit()">编辑</base-button>
         </search-item>
         <search-item>
-          <el-button type="primary" @click="openAddPOST()">添加</el-button>
+          <el-button type="primary" @click="openAdd()">添加</el-button>
         </search-item>
       </simple-search>
     </template>
@@ -23,7 +23,7 @@
       @checkbox-all="({ checked, records }) => {checkedData = records}"
       @checkbox-change="({ checked, records }) => {checkedData = records}"
     >
-      <vxe-table-column type="checkbox" width="40" />
+      <vxe-table-column type="checkbox" width="50" />
       <vxe-table-column field="song_title" title="歌曲名" />
       <vxe-table-column field="port_name" title="歌手名" />
       <vxe-table-column field="song_format" title="歌曲格式" />
@@ -46,7 +46,7 @@
         @size-change="limitChange"
         @current-change="pageChange"
       />
-      <port-list-form
+      <song-list-form
         :visible.sync="drawerVisible"
         :mode="mode"
         :postOption='postOption'
@@ -61,23 +61,23 @@
 <script>
 // import { portList,portFromList } from '@/api/db'
 import resetPagination from '@/mixins/resetPagination'
-import portListForm from './song-list-form'
+import songListForm from './song-list-form'
 // import { deleteCommon } from '@/api'
-
+import { MUSIC_UPLOAD_OPTION, MUSIC_FORMAT_OPTION } from '@/option'
 export default {
   name: 'SourceSongList',
   components: {
-    portListForm
+    songListForm
   },
   mixins: [resetPagination],
   data() {
     return {
-      autoId: 'port_id',
-      dt: 'port',
-      tableData:[],
       // 搜索列
       searchColumns: [
-        { tagName: 'input', prop: 'port_name', value: '', placeholder: '港区名称',className: 'w140px', }
+        { tagName: 'input', prop: 'port_name', value: '', placeholder: '歌手名', className: 'w140px' },
+        { tagName: 'input', prop: 'song_title', value: '', placeholder: '歌曲名', className: 'w140px' },
+        { tagName: 'select', prop: 'song_format', value: '', placeholder: '歌曲格式', className: 'w140px', options: MUSIC_FORMAT_OPTION, multiple: true, collapseTags: true},
+        { tagName: 'select', prop: 'song_style', value: '', placeholder: '歌曲风格', className: 'w140px', options: MUSIC_UPLOAD_OPTION, multiple: true, collapseTags: true},
       ],
       postOption:''
     }
@@ -86,23 +86,6 @@ export default {
     async getCustomList() {
       // return await portList({ page: this.pagination.page, limit: this.pagination.limit, ...this.condition, autoId:this.autoId})
     },
-    async openAddPOST() {
-      // const { data } = await portFromList(this.form)
-      // this.postOption=data || []
-      // this.mode = 'add'
-      // this.drawerVisible = true
-      // if (Object.prototype.toString.call(this.openAddBack) === '[object Function]') this.openAddBack()
-    },
-    async openEditPOST() {
-      // const { data } = await portFromList(this.form)
-      // this.postOption=data || []
-      // if (!this.checkedData[0]) return this.$message.warning('未选中数据！')
-      // this.formData = { ...this.checkedData[0] }
-      // this.mode = 'edit'
-      // this.drawerVisible = true
-      // // 需在组件内自定义openAddBack方法
-      // if (Object.prototype.toString.call(this.openEditBack) === '[object Function]') this.openEditBack(this.formData)
-    }
   }
 }
 </script>

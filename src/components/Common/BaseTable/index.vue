@@ -26,9 +26,9 @@
           <!-- 复选框 -->
           <vxe-table-column v-if="column.type === 'checkbox'" :key="index" type="checkbox" :width="columns.width ? columns.width : '40'" />
           <!-- 序号 -->
-          <vxe-table-column v-else-if="column.type === 'seq'" :key="index" type="seq" :title="column.title ? column.title: '序号'" :width="columns.width ? columns.width : '65'" show-overflow="title" />
+          <vxe-table-column v-else-if="column.type === 'seq'" :key="index+1" type="seq" :title="column.title ? column.title: '序号'" :width="columns.width ? columns.width : '65'" show-overflow="title" />
           <!-- 具体内容和slot -->
-          <vxe-table-column v-else :key="index" :field="column.field" :title="column.title" :width="column.width">
+          <vxe-table-column v-else :key="index+2" :field="column.field" :title="column.title" :width="column.width">
             <template v-slot="{row}">
               <slot v-if="column.slot" :name="column.slot" :row="row" />
               <template v-else>

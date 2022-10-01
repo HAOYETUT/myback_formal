@@ -1,4 +1,4 @@
-// import { IMPORT_EXPORT_STATUS } from '@/utils/constant'
+import { IMPORT_EXPORT_STATUS } from '@/utils/constant'
 import _ from 'lodash'
 import dayjs from 'dayjs'
 
@@ -149,8 +149,8 @@ export function formateBoxType(row, attrName = 'box_type') {
 // 格式化业务状态
 export function statusFormatter(row, attrName = 'status') {
   if (!isObject(row)) return ''
-  // const obj = IMPORT_EXPORT_STATUS[row[attrName]] || {}
-  // return obj.name ? `<span style="color:${obj.colorName}">${obj.name}</span>` : ''
+  const obj = IMPORT_EXPORT_STATUS[row[attrName]] || {}
+  return obj.name ? `<span style="color:${obj.colorName}">${obj.name}</span>` : ''
 }
 
 // 前置补0

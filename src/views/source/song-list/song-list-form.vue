@@ -10,39 +10,22 @@
   >
     <drawer-layout>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="所属港区" prop="port_from_id" class="w100">
-          <el-select v-model="form.port_from_id" placeholder="请选择" style="width:340px;">
-            <el-option v-for="item in postOption" :key="item.port_from_id" :label="item.name" :value="item.port_from_id" />
-          </el-select>
+        <el-form-item label="音乐名称" prop="song_title">
+          <el-input v-model="form.song_title" />
         </el-form-item>
-        <el-form-item label="港区名称" prop="port_name">
+        <el-form-item label="歌手名称" prop="port_name">
           <el-input v-model="form.port_name" />
         </el-form-item>
-        <el-form-item label="省" prop="province">
-          <el-input v-model="form.province" />
+
+        <el-form-item label="歌曲格式" prop="song_format" class="w100">
+          <el-select v-model="form.song_format" placeholder="请选择" style="width:340px;">
+            <el-option v-for="item in MUSIC_OPTION_FORMAT" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
-        <el-form-item label="市" prop="city">
-          <el-input v-model="form.city" />
-        </el-form-item>
-        <el-form-item label="区" prop="district">
-          <el-input v-model="form.district" />
-        </el-form-item>
-        <el-form-item label="地址" prop="address">
-          <el-input v-model="form.address" />
-        </el-form-item>
-        <el-form-item prop="lng">
-          <template #label>
-            <el-tooltip placement="top-start">
-              <div slot="content">
-                <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">添加经伟度，系统会为您自动计算距离<b>[点击]</b></a>
-              </div>
-              <span class="poi" style="color: #01aaed;">经度</span>
-            </el-tooltip>
-          </template>
-          <el-input v-model="form.lng" />
-        </el-form-item>
-        <el-form-item label="纬度" prop="lat">
-          <el-input v-model="form.lat" />
+        <el-form-item label="歌曲类型" prop="song_style" class="w100">
+          <el-select v-model="form.song_style" placeholder="请选择" style="width:340px;">
+            <el-option v-for="item in MUSIC_OPTION_TYPE" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
       </el-form>
       <template slot="footer">
@@ -57,6 +40,7 @@
 import formDrawer from '@/mixins/formDrawer'
 import { getFormatForm, diff } from '@/utils'
 import _ from 'lodash'
+import { MUSIC_OPTION_TYPE, MUSIC_OPTION_FORMAT } from '@/option'
 // import { portAdd, portEditor } from '@/api/db'
 const INIT_FORM = {
   port_from_id: '',
@@ -68,8 +52,9 @@ const INIT_FORM = {
   province:"",
   city:'',
   district:'',
+  song_title:'',
   port_name:'',
-  port_id:''
+  song_style: '',
 }
 export default {
   mixins: [formDrawer],
@@ -85,16 +70,13 @@ export default {
       drawerName: '港区',
       form: { ...INIT_FORM },
       initForm: { ...INIT_FORM },
-      citysOptions: [{ label: '上海', value: 1 }, { label: '天津', value: 2 }, { label: '青岛', value: 3 }, { label: '九江', value: 4 },{label: '太仓', value: '5'}],
+      MUSIC_OPTION_TYPE,
+      MUSIC_OPTION_FORMAT,
       rules: {
-        port_from_id: [{ required: true, pattern: /[\S]+/, message: '请选择所属港区; 注：不可为0', trigger: 'blur' }],
-        city: [{ required: true, pattern: /[\S]+/, message: '请输入市级; 注：不可为0', trigger: 'blur' }],
-        port_name: [{ required: true, pattern: /[\S]+/, message: '请输入港区名称; 注：不可为0', trigger: 'blur' }],
-        province: [{ required: true, pattern: /[\S]+/, message: '请输入省级; 注：不可为0', trigger: 'blur' }],
-        district: [{ required: true, pattern: /[\S]+/, message: '请输入区级; 注：不可为0', trigger: 'blur' }],
-        lng: [{ required: true, pattern: /[\S]+/, message: '请输入经度; 注：不可为0', trigger: 'blur' }],
-        lat: [{ required: true, pattern: /[\S]+/, message: '请输入纬度; 注：不可为0', trigger: 'blur' }],
-        address: [{ required: true, pattern: /[\S]+/, message: '请输入地址; 注：不可为0', trigger: 'blur' }],
+        song_title: [{ required: true, pattern: /[\S]+/, message: '请输入音乐名称', trigger: 'blur' }],
+        port_name: [{ required: true, pattern: /[\S]+/, message: '请输入歌手名称', trigger: 'blur' }],
+        song_style: [{ required: true, pattern: /[\S]+/, message: '请选择歌曲类型', trigger: 'blur' }],
+        song_format: [{ required: true, pattern: /[\S]+/, message: '请选择歌曲格式', trigger: 'blur' }],
       },
     }
   },
