@@ -27,9 +27,26 @@ export const routerList = [
             {
                 jump: 'source/song-list/index',
                 title:'歌曲管理',
+            },
+            {
+                jump: 'source/image-list/index',
+                title:'图库管理',
             }
         ]
-    },
+    },{
+        path: '/money',
+        component: Layout,
+        hidden: false,
+        title:'用户管理',
+        redirect: '/money/money-list',
+        icon: 'el-icon-document',
+        children: [
+             {
+                jump: '/unmoney-list',
+                title: '用户列表',
+            }
+        ]
+      }
     // {
     //     path: '/money',
     //     jump: 'Money',

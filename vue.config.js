@@ -109,17 +109,17 @@ module.exports = {
       })
     })
     config
-      .plugin('compression')
-      .use(CompressionWebpackPlugin, [
-        {
-          filename: '[path].gz[query]',
-          algorithm: 'gzip',
-          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-          threshold: 8192,
-          minRatio: 0.8
-        }
-      ])
-      .end()
+      // .plugin('compression')
+      // .use(CompressionWebpackPlugin, [
+      //   {
+      //     filename: '[path].gz[query]',
+      //     algorithm: 'gzip',
+      //     test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+      //     threshold: 8192,
+      //     minRatio: 0.8
+      //   }
+      // ])
+      // .end()
       if (build7z) {
         config.when(process.env.NODE_ENV === 'production', (config) => {
           config
