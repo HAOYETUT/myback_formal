@@ -1,262 +1,108 @@
+<!--日志管理-->
 <template>
-   <div>
-    歌曲列表
-   </div>
+  <table-layout>
+    <template #header>
+      <simple-search :search-columns="searchColumns" @query-search="querySearch">
+        <search-item>
+          <base-button :checked-length="checkedData.length " @click="openEditPOST()">编辑</base-button>
+        </search-item>
+        <search-item>
+          <el-button type="primary" @click="openAddPOST()">添加</el-button>
+        </search-item>
+      </simple-search>
+    </template>
+    <vxe-table
+      ref="xTable"
+      auto-resize
+      height="100%"
+      row-id="port_from_id"
+      highlight-hover-row
+      :data="tableData"
+      column-min-width="120"
+      :loading="listLoading"
+      @checkbox-all="({ checked, records }) => {checkedData = records}"
+      @checkbox-change="({ checked, records }) => {checkedData = records}"
+    >
+      <vxe-table-column type="checkbox" width="40" />
+      <vxe-table-column field="song_title" title="歌曲名" />
+      <vxe-table-column field="port_name" title="歌手名" />
+      <vxe-table-column field="song_format" title="歌曲格式" />
+      <vxe-table-column field="addTime" title="歌曲上传时间" />
+      <vxe-table-column field="downloads" title="歌曲下载数" />
+      <vxe-table-column field="state" title="状态" />
+      <vxe-table-column field="uploader" title="上传人" />
+      <vxe-table-column field="song_style" title="风格" />
       
-  </template>
-  
-  <script>
-  export default {
-    name: 'Songlist',
-    data() {
-      return {
-        jumpTime: 5,
-        oops: '抱歉!',
-        headline: '您没有操作权限...',
-        info: '当前帐号没有操作权限,请联系管理员。',
-        btn: '返回',
-        timer: 0
-      }
+      
+    </vxe-table>
+    <template #footer>
+      <el-pagination
+        v-if="pagination.count > 0"
+        :current-page="pagination.page"
+        :layout="pagination.layout"
+        :page-size="pagination.limit"
+        :total="pagination.count"
+        :page-sizes="pagination.pageSizes"
+        @size-change="limitChange"
+        @current-change="pageChange"
+      />
+      <port-list-form
+        :visible.sync="drawerVisible"
+        :mode="mode"
+        :postOption='postOption'
+        :form-data="formData"
+        @add-success="addSuccess"
+        @edit-success="editSuccess"
+      />
+    </template>
+  </table-layout>
+</template>
+
+<script>
+// import { portList,portFromList } from '@/api/db'
+import resetPagination from '@/mixins/resetPagination'
+import portListForm from './song-list-form'
+// import { deleteCommon } from '@/api'
+
+export default {
+  name: 'SourceSongList',
+  components: {
+    portListForm
+  },
+  mixins: [resetPagination],
+  data() {
+    return {
+      autoId: 'port_id',
+      dt: 'port',
+      tableData:[],
+      // 搜索列
+      searchColumns: [
+        { tagName: 'input', prop: 'port_name', value: '', placeholder: '港区名称',className: 'w140px', }
+      ],
+      postOption:''
+    }
+  },
+  methods: {
+    async getCustomList() {
+      // return await portList({ page: this.pagination.page, limit: this.pagination.limit, ...this.condition, autoId:this.autoId})
     },
-    mounted() {
-      this.timeChange()
-      document.body.style.background = '#ffffff'
+    async openAddPOST() {
+      // const { data } = await portFromList(this.form)
+      // this.postOption=data || []
+      // this.mode = 'add'
+      // this.drawerVisible = true
+      // if (Object.prototype.toString.call(this.openAddBack) === '[object Function]') this.openAddBack()
     },
-    beforeDestroy() {
-      clearInterval(this.timer)
-      document.body.style.background = '#f2f2f2'
-    },
-    methods: {
-      timeChange() {
-        this.timer = setInterval(() => {
-          if (this.jumpTime) {
-            this.jumpTime--
-          } else {
-            this.$router.push({ path: '/' })
-            this.$store.dispatch('tagsView/delOthersViews', {
-              path: '/'
-            })
-            clearInterval(this.timer)
-          }
-        }, 1000)
-      }
+    async openEditPOST() {
+      // const { data } = await portFromList(this.form)
+      // this.postOption=data || []
+      // if (!this.checkedData[0]) return this.$message.warning('未选中数据！')
+      // this.formData = { ...this.checkedData[0] }
+      // this.mode = 'edit'
+      // this.drawerVisible = true
+      // // 需在组件内自定义openAddBack方法
+      // if (Object.prototype.toString.call(this.openEditBack) === '[object Function]') this.openEditBack(this.formData)
     }
   }
-  </script>
-  
-  <style lang="scss" scoped>
-  .error-container {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    .error-content {
-      .pic-error {
-        position: relative;
-        float: left;
-        width: 120%;
-        overflow: hidden;
-  
-        &-parent {
-          width: 100%;
-        }
-  
-        &-child {
-          position: absolute;
-  
-          &.left {
-            top: 17px;
-            left: 220px;
-            width: 80px;
-            opacity: 0;
-            animation-name: cloudLeft;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-delay: 1s;
-            animation-fill-mode: forwards;
-          }
-  
-          &.mid {
-            top: 10px;
-            left: 420px;
-            width: 46px;
-            opacity: 0;
-            animation-name: cloudMid;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-delay: 1.2s;
-            animation-fill-mode: forwards;
-          }
-  
-          &.right {
-            top: 100px;
-            left: 500px;
-            width: 62px;
-            opacity: 0;
-            animation-name: cloudRight;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-delay: 1s;
-            animation-fill-mode: forwards;
-          }
-  
-          @keyframes cloudLeft {
-            0% {
-              top: 17px;
-              left: 220px;
-              opacity: 0;
-            }
-  
-            20% {
-              top: 33px;
-              left: 188px;
-              opacity: 1;
-            }
-  
-            80% {
-              top: 81px;
-              left: 92px;
-              opacity: 1;
-            }
-  
-            100% {
-              top: 97px;
-              left: 60px;
-              opacity: 0;
-            }
-          }
-  
-          @keyframes cloudMid {
-            0% {
-              top: 10px;
-              left: 420px;
-              opacity: 0;
-            }
-  
-            20% {
-              top: 40px;
-              left: 360px;
-              opacity: 1;
-            }
-  
-            70% {
-              top: 130px;
-              left: 180px;
-              opacity: 1;
-            }
-  
-            100% {
-              top: 160px;
-              left: 120px;
-              opacity: 0;
-            }
-          }
-  
-          @keyframes cloudRight {
-            0% {
-              top: 100px;
-              left: 500px;
-              opacity: 0;
-            }
-  
-            20% {
-              top: 120px;
-              left: 460px;
-              opacity: 1;
-            }
-  
-            80% {
-              top: 180px;
-              left: 340px;
-              opacity: 1;
-            }
-  
-            100% {
-              top: 200px;
-              left: 300px;
-              opacity: 0;
-            }
-          }
-        }
-      }
-  
-      .bullshit {
-        position: relative;
-        float: left;
-        width: 300px;
-        padding: 30px 0;
-        overflow: hidden;
-  
-        &-oops {
-          margin-bottom: 20px;
-          font-size: 32px;
-          font-weight: bold;
-          line-height: 40px;
-          color: $base-color-blue;
-          opacity: 0;
-          animation-name: slideUp;
-          animation-duration: 0.5s;
-          animation-fill-mode: forwards;
-        }
-  
-        &-headline {
-          margin-bottom: 10px;
-          font-size: 20px;
-          font-weight: bold;
-          line-height: 24px;
-          color: #222;
-          opacity: 0;
-          animation-name: slideUp;
-          animation-duration: 0.5s;
-          animation-delay: 0.1s;
-          animation-fill-mode: forwards;
-        }
-  
-        &-info {
-          margin-bottom: 30px;
-          font-size: 13px;
-          line-height: 21px;
-          color: $base-color-gray;
-          opacity: 0;
-          animation-name: slideUp;
-          animation-duration: 0.5s;
-          animation-delay: 0.2s;
-          animation-fill-mode: forwards;
-        }
-  
-        &-return-home {
-          display: block;
-          float: left;
-          width: 110px;
-          height: 36px;
-          font-size: 14px;
-          line-height: 36px;
-          color: #fff;
-          text-align: center;
-          cursor: pointer;
-          background: $base-color-blue;
-          border-radius: 100px;
-          opacity: 0;
-          animation-name: slideUp;
-          animation-duration: 0.5s;
-          animation-delay: 0.3s;
-          animation-fill-mode: forwards;
-        }
-  
-        @keyframes slideUp {
-          0% {
-            opacity: 0;
-            transform: translateY(60px);
-          }
-  
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      }
-    }
-  }
-  </style>
-  
+}
+</script>

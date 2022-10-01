@@ -79,7 +79,7 @@ const actions = {
           token: 'dhuacasdiuq-desa',
           group_name: '管理员'
         }
-        console.log(data)
+        // console.log(data)
         const accessToken = data[tokenName] || ''
         commit('setAccessToken', accessToken)
         // 保存返回的路由信息

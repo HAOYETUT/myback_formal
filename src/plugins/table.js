@@ -15,7 +15,7 @@ import {
   Grid
 } from 'vxe-table'
 import zhCNLocat from 'vxe-table/lib/locale/lang/zh-CN'
-
+import 'vxe-table/lib/style.css'
 // 按需加载的方式默认是不带国际化的，需要自行导入
 VXETable.setup({
   i18n: key => XEUtils.get(zhCNLocat, key),

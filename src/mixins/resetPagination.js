@@ -178,10 +178,29 @@ export default {
     getList() {
       this.listLoading = true
       // this.getCustomList(this.pagination).then(({ data, count }) => {
-      //   this.tableData = data || []
-      //   this.pagination.count = count || 0
-      //   this.checkedData = []
-      //   this.goEasy = false
+        this.tableData = [
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 100, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '灵魂摆渡人(dj版)-深七', port_name: '深七', song_format: 'mp3', addTime:'2021-09-02', downloads: 28, state: '允许下载', uploader: '小哪吒2', song_style: '喊麦'},
+          {song_title: '练习', port_name: '刘德华', song_format: 'mp3', addTime:'2022-04-01', downloads: 2995, state: '允许下载', uploader: '小哪吒3', song_style: '经典'},
+          {song_title: '恋人心', port_name: '魏新雨', song_format: 'mp3', addTime:'2022-03-28', downloads: 2, state: '禁止下载', uploader: '小哪吒1', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 145, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 4565, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 897, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 457, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 77545, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 13242, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 634534, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 3, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 23423, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 54, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 23, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 3423, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 56, state: '允许下载', uploader: '小哪吒', song_style: '经典'},
+          {song_title: '连借口都没有', port_name: '孙子涵', song_format: 'mp3', addTime:'2022-10-01', downloads: 678, state: '禁止下载', uploader: '小哪吒', song_style: '经典'},
+        ]
+        this.pagination.count = count || 0
+        this.checkedData = []
+        this.goEasy = false
       // }).finally(() => {
       //   this.listLoading = false
       //   this.goEasy = false
