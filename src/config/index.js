@@ -10,7 +10,7 @@
 // const PUT_BOX_LOGIN_URL = process.env.VUE_APP_PUT_BOX_URL
 // const C3_URL = process.env.VUE_APP_C3_URL
 // const FF_URL = process.env.VUE_APP_FF_URL
-const BASE_API = 'http://www.test.com'
+const BASE_API = ''
 // console.log({ BASE_API, V2_API, PROVIEW_FILE_API, CRM_API, RPM_API, RPA_RELEASE_API, PUT_BOX_LOGIN_URL, C3_URL, FF_URL })
 // export { BASE_API, V2_API, PROVIEW_FILE_API, CRM_API, RPM_API, RPA_RELEASE_API, CARGO_ADMIN_API, PUT_BOX_LOGIN_URL, C3_URL, FF_URL }
 export {BASE_API}

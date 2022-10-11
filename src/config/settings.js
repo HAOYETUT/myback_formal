@@ -19,7 +19,7 @@ module.exports = {
   // 简写
   abbreviation: 'vab',
   // 开发环境端口号
-  devPort: '3030',
+  devPort: '8899',
   // 是否显示顶部进度条
   progressBar: true,
   // 缓存路由的最大数量

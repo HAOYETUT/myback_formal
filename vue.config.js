@@ -156,15 +156,34 @@ module.exports = {
       }
     }
   },
-  // devServer: {
-  //   host: '127.0.0.1',
-  //   port: 8080,
-  //   client: {
-  //     webSocketURL: 'ws://127.0.0.103:8080/ws',
-  //   },
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //  }
-  // }
+  //跨域
+  devServer: {
+    // open: true,
+    // host: '',
+    port: 8080,
+    proxy: 'http://localhost:8090'
+    // client: {
+    //   webSocketURL: 'ws://128.0.0.1:8080/ws',
+    // },
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    //  }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:8090', // 请求的接口
+    //     ws: true, //  
+    //     changeOrigin: true, //虚拟的站点需要更管origin
+    //     secure: false, // 是否https接口
+    //     pathRewrite: {
+    //       '^/api':'/'//重写路径
+    //       //这里的配置是正则表达式，以/api开头的将会被用用‘/api'替换掉，假如后台文档的接口是 /api/list/xxx
+    //       //前端api接口写：axios.get('/api/list/xxx') ， 被处理之后实际访问的是：http://news.baidu.com/api/list/xxx
+    //     },
+    //     // headers: {
+    //     //   referer: 'http://localhost:8090' //这里后端做了拒绝策略限制，请求头必须携带referer，否则无法访问后台
+    //     // }
+    //   }
+    // }
+  }
 }
 

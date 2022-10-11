@@ -26,14 +26,16 @@
       <vxe-table-column type="checkbox" width="50" />
       <vxe-table-column field="song_title" title="歌曲名" />
       <vxe-table-column field="port_name" title="歌手名" />
-      <vxe-table-column field="song_format" title="歌曲格式" />
+      <vxe-table-column field="song_format" title="歌曲格式" :formatter="getSongFormat"/>
       <vxe-table-column field="addTime" title="歌曲上传时间" />
       <vxe-table-column field="downloads" title="歌曲下载数" />
-      <vxe-table-column field="state" title="状态" />
+      <vxe-table-column field="state" title="状态">
+        <template v-slot="{row}">
+          <span :style="{color: getStateColor(row.state)}">{{getState(row.state)}}</span>
+        </template>
+      </vxe-table-column>
       <vxe-table-column field="uploader" title="上传人" />
-      <vxe-table-column field="song_style" title="风格" />
-      
-      
+      <vxe-table-column field="song_style" title="风格" :formatter="getSongStyle"/>
     </vxe-table>
     <template #footer>
       <el-pagination
@@ -63,7 +65,7 @@
 import resetPagination from '@/mixins/resetPagination'
 import songListForm from './song-list-form'
 // import { deleteCommon } from '@/api'
-import { MUSIC_UPLOAD_OPTION, MUSIC_FORMAT_OPTION } from '@/option'
+import { MUSIC_OPTION_TYPE, MUSIC_OPTION_FORMAT, AV_OPTION_TYPE } from '@/option'
 export default {
   name: 'SourceSongList',
   components: {
@@ -76,8 +78,9 @@ export default {
       searchColumns: [
         { tagName: 'input', prop: 'port_name', value: '', placeholder: '歌手名', className: 'w140px' },
         { tagName: 'input', prop: 'song_title', value: '', placeholder: '歌曲名', className: 'w140px' },
-        { tagName: 'select', prop: 'song_format', value: '', placeholder: '歌曲格式', className: 'w140px', options: MUSIC_FORMAT_OPTION, multiple: true, collapseTags: true},
-        { tagName: 'select', prop: 'song_style', value: '', placeholder: '歌曲风格', className: 'w140px', options: MUSIC_UPLOAD_OPTION, multiple: true, collapseTags: true},
+        { tagName: 'select', prop: 'song_format', value: '', placeholder: '歌曲格式', className: 'w180px', options:  MUSIC_OPTION_FORMAT, multiple: true, collapseTags: true},
+        { tagName: 'select', prop: 'song_style', value: '', placeholder: '歌曲风格', className: 'w180px', options: MUSIC_OPTION_TYPE, multiple: true, collapseTags: true},
+        { tagName: 'select', prop: 'state', value: '', placeholder: '歌曲状态', className: 'w180px', options: AV_OPTION_TYPE, multiple: true, collapseTags: true},
       ],
       postOption:''
     }
@@ -86,6 +89,20 @@ export default {
     async getCustomList() {
       // return await portList({ page: this.pagination.page, limit: this.pagination.limit, ...this.condition, autoId:this.autoId})
     },
+    getSongFormat({ row }) {
+      if (!row) return ''
+      return MUSIC_OPTION_FORMAT?.find(it=> it.value === row.song_format)?.label
+    },
+    getSongStyle({ row }) {
+      if (!row) return ''
+      return MUSIC_OPTION_TYPE?.find(it=> it.value === row.song_style)?.label
+    },
+    getState(val) {
+      return AV_OPTION_TYPE?.find(it=> it.value === val)?.label
+    },
+    getStateColor(val) {
+      return AV_OPTION_TYPE?.find(it=> it.value === val)?.color
+    }
   }
 }
 </script>

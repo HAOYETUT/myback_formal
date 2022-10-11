@@ -62,3 +62,12 @@ export function getBoxbaseInfo(data) {
     data
   })
 }
+
+// 车队列表和地推接口
+export function getlogin(data) {
+  return request({
+    url: '/api/login',
+    method: 'post',
+    data
+  })
+}
