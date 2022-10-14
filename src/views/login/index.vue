@@ -30,10 +30,11 @@
     </el-form>
     <div style="position: absolute;bottom:0;padding:5px;text-align: center;left:0;right:0">
     <div style="color:#fff;margin-bottom:5px;">
-      <a target="_blank" style="color:#fff" href="https://beian.miit.gov.cn">沪ICP备1008620223860号-1</a>
+      <a target="_blank" style="color:#fff" href="https://beian.miit.gov.cn">小哪吒影音后台管理系统</a>
       <span style="display: inline-block;padding: 0 5px;">|</span>
-      <img alt="401" src="@/assets/images/ga_icon.png" style="vertical-align: middle; margin-right: 3px;" />
-      <a style="color:#fff" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302005873" target="_blank">沪公网安备31011302005873号</a>
+      <!-- <img alt="401" src="@/assets/images/ga_icon.png" style="vertical-align: middle; margin-right: 3px;" /> -->
+      <img alt="401" src="@/assets/images/nezha.jpg" style="vertical-align: middle; margin-right: 3px; width: 15px;height: 15px;" />
+      <a style="color:#fff" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302005873" target="_blank">系统由VUE2.0技术支持</a>
     </div>
   </div>
   </div>
@@ -128,8 +129,10 @@ $input-gutter-icon: 40px;
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  background: #333;
-
+  // background: #333;
+  background: url('../../assets/sw-01.jpg') no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
   .login-form {
     position: relative;
     width: 320px;
@@ -138,7 +141,8 @@ $input-gutter-icon: 40px;
     margin: 0 auto;
     overflow: hidden;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    // background-color: rgba(0, 0, 0, 0.5);
+    background: pink;
     border-radius: 10px;
     .title-container {
       position: relative;
