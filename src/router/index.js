@@ -38,7 +38,7 @@
          component: () => import('@/views/index/index'),
          meta: {
            title: '首页',
-           icon: 'el-icon-s-home',
+           icon: 'el-icon-house',
            affix: true,
            noKeepAlive: true
          }
@@ -46,16 +46,6 @@
       
      ]
    },
-  //  {
-  //   path: '/mpney',
-  //   name: 'MoneyList',
-  //   meta: {
-  //     title: '会员',
-  //     icon: 'el-icon-document',
-  //     affix: true,
-  //     noKeepAlive: true
-  //   }
-  // },
   {
     path: '/personal-center',
     component: Layout,
@@ -75,48 +65,39 @@
           title: '个人中心'
         }
       },
-      // {
-      //   path: '/money-list',
-      //   name: 'MoneyList',
-      //   component: () => import('@/views/money/money-list/index'),
-      //   meta: {
-      //     title: '会员',
-      //     affix: false,
-      //     noKeepAlive: true
-      //   }
-      // }
     ]
-  },{
-    path: '/money',
-    component: Layout,
-    hidden: false,
-    redirect: '/money/money-list',
-    meta: {
-      title: '11111111111',
-      icon: 'el-icon-document'
-    },
-    children: [
-      {
-        path: '/money-list',
-        // name: 'MoneyList',
-        component: () => import('@/views/money/money-list/index'),
-        meta: {
-          title: '会员',
-          affix: false,
-          noKeepAlive: true
-        }
-      }, {
-        path: '/unmoney-list',
-        // name: 'UnmoneyList',
-        component: () => import('@/views/money/unmoney-list/index'),
-        meta: {
-          title: '普通用户',
-          affix: false,
-          noKeepAlive: true
-        }
-      }
-    ]
-  }
+  },
+  // {
+  //   path: '/money',
+  //   component: Layout,
+  //   hidden: false,
+  //   redirect: '/money/money-list',
+  //   meta: {
+  //     title: '用户管理',
+  //     icon: 'el-icon-document'
+  //   },
+  //   children: [
+  //     {
+  //       path: '/money-list',
+  //       // name: 'MoneyList',
+  //       component: () => import('@/views/money/money-list/index'),
+  //       meta: {
+  //         title: '会员',
+  //         affix: false,
+  //         noKeepAlive: true
+  //       }
+  //     }, {
+  //       path: '/unmoney-list',
+  //       // name: 'UnmoneyList',
+  //       component: () => import('@/views/money/unmoney-list/index'),
+  //       meta: {
+  //         title: '普通用户',
+  //         affix: false,
+  //         noKeepAlive: true
+  //       }
+  //     }
+  //   ]
+  // }
    
  ]
  
@@ -157,11 +138,11 @@
   //      }
   //    ]
   //  },
-  //  {
-  //    path: '*',
-  //    redirect: '/404',
-  //    hidden: true
-  //  }
+   {
+     path: '*',
+     redirect: '/404',
+     hidden: true
+   }
  ]
  
  const router = new VueRouter({

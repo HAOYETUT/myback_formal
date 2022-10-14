@@ -60,7 +60,7 @@ export function formatAllRoutes(routerList = []) {
       meta: {
         title: item.title,
         affix: false,
-        icon: item.icon || '',
+        icon: item?.icon || 'el-icon-document',
         noKeepAlive: false
       }
     }

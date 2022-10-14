@@ -10,3 +10,8 @@ export default {
   mounted() {}
 }
 </script>
+<style>
+* {
+  font-family: '仿宋';
+}
+</style>
