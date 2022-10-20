@@ -44,7 +44,7 @@ router.beforeEach(async(to, from, next) => {
           accessRoutes = await store.dispatch('routes/setRoutes', permissions)
           // 后端加载路由
         } else if (authentication === 'all') {
-          console.log(await store.dispatch('routes/setAllRoutes'),"store.dispatch('routes/setAllRoutes')")
+          // console.log(await store.dispatch('routes/setAllRoutes'),"store.dispatch('routes/setAllRoutes')")
           accessRoutes = await store.dispatch('routes/setAllRoutes')
         }
         router.addRoutes(accessRoutes)

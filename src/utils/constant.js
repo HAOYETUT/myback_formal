@@ -9,8 +9,7 @@ export const FILE_TYPE = {
   'text/plain': 'txt',
   'application/msword': 'doc',
   'application/vnd.ms-excel': 'xls',
-  'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-    'docx',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xlsx'
 }
 

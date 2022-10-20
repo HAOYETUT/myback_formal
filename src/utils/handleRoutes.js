@@ -7,10 +7,10 @@ import { parseHorizontal, camelCase, firstCapitalize } from '@/utils'
  */
 export function getAccessRoutes() {
   try {
-    console.log(JSON.parse(localStorage.getItem(routeTableName)),'JSON.parse(localStorage.getItem(routeTableName))')
+    // console.log(JSON.parse(localStorage.getItem(routeTableName)),'JSON.parse(localStorage.getItem(routeTableName))')
     return JSON.parse(localStorage.getItem(routeTableName))
   } catch (e) {
-    console.log('getAccessRoutes:' + e) // for debug
+    // console.log('getAccessRoutes:' + e) // for debug
     return []
   }
 }
@@ -35,10 +35,10 @@ export function removeAccessRoutes() {
  * https://pro.antdv.com/docs/authority-management
  */
 export function formatAllRoutes(routerList = []) {
-  console.log(routerList,'routerList')
+  // console.log(routerList,'routerList')
   const formatRoutes = routerList.map((item, index) => {
     let tempJump = parseHorizontal(item.jump)
-    console.log(tempJump,'tempJump')
+    // console.log(tempJump,'tempJump')
     // let params = '';
     // if(tempJump.indexOf("?")>0){
     //   var temp = tempJump.split("?");

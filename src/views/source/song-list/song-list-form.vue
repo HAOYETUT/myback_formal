@@ -27,6 +27,20 @@
             <el-option v-for="item in MUSIC_OPTION_TYPE" :key="item.value" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
+        <el-form-item label="上传音乐" prop="upload_song" class="w100">
+          <el-upload
+            class="upload-demo"
+            ref="upload"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :file-list="fileList"
+            :auto-upload="false"
+            :before-upload="beforeUpload()"
+          >
+            <el-button size="small" type="primary">选取音乐</el-button>
+          </el-upload>
+        </el-form-item>
       </el-form>
       <template slot="footer">
         <el-button @click="resetFormInfo()">取消</el-button>
@@ -70,9 +84,22 @@ export default {
         song_style: [{ required: true, pattern: /[\S]+/, message: '请选择歌曲类型', trigger: 'blur' }],
         song_format: [{ required: true, pattern: /[\S]+/, message: '请选择歌曲格式', trigger: 'blur' }],
       },
+      fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
     }
   },
   methods: {
+      submitUpload() {
+        this.$refs.upload.submit();
+      },
+      handleRemove(file, fileList) {
+        console.log(file, fileList);
+      },
+      handlePreview(file) {
+        console.log(file);
+      },
+      beforeUpload(value){
+        console.log(value)
+      },
     async addSubmit() {
       if (this.submitLoading) return
       this.submitLoading = true

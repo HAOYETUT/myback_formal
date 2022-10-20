@@ -28,15 +28,20 @@
       </el-form-item>
       <el-button :loading="loading" class="w100" type="primary" @click="handleLogin">登录</el-button>
     </el-form>
+    
     <div style="position: absolute;bottom:0;padding:5px;text-align: center;left:0;right:0">
-    <div style="color:#fff;margin-bottom:5px;">
-      <a target="_blank" style="color:#fff" href="https://beian.miit.gov.cn">小哪吒影音后台管理系统</a>
-      <span style="display: inline-block;padding: 0 5px;">|</span>
-      <!-- <img alt="401" src="@/assets/images/ga_icon.png" style="vertical-align: middle; margin-right: 3px;" /> -->
-      <img alt="401" src="@/assets/images/nezha.jpg" style="vertical-align: middle; margin-right: 3px; width: 15px;height: 15px;" />
-      <a style="color:#fff" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302005873" target="_blank">系统由VUE2.0技术支持</a>
+      <audio controls  loop muted class="audio">
+        <source autoplay src="@/assets/audio/夜曲 - 周杰伦.mp3" >
+        您的浏览器不支持 audio 元素。
+      </audio>
+      <div style="color:#fff;margin-bottom:5px;">
+        <a target="_blank" style="color:#fff" href="https://beian.miit.gov.cn">小哪吒影音后台管理系统</a>
+        <span style="display: inline-block;padding: 0 5px;">|</span>
+        <!-- <img alt="401" src="@/assets/images/ga_icon.png" style="vertical-align: middle; margin-right: 3px;" /> -->
+        <img alt="401" src="@/assets/images/nezha.jpg" style="vertical-align: middle; margin-right: 3px; width: 15px;height: 15px;" />
+        <a style="color:#fff" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302005873" target="_blank">系统由VUE2.0技术支持</a>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -122,7 +127,10 @@ export default {
 <style lang="scss" scoped>
 /* icon input 宽度间隔 */
 $input-gutter-icon: 40px;
-
+.audio {
+  width: 100%;
+  height: 50px;
+}
 .login-container {
   display: flex;
   align-items: center;

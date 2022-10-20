@@ -12,12 +12,17 @@ export const routerList = [
             {
                 jump: 'source/song-list/index',
                 icon: 'el-icon-headset',
-                title:'歌曲管理',
+                title:'歌曲列表',
             },
             {
                 jump: 'source/image-list/index',
                 icon: 'el-icon-picture-outline',
-                title:'图库管理',
+                title:'图库列表',
+            },
+            {
+                jump: 'source/move-list/index',
+                icon: 'el-icon-picture-outline',
+                title:'电影列表',
             }
         ]
     },
