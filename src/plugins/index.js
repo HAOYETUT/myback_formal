@@ -13,6 +13,14 @@ import drag from '@/directive/drag'
 import readwrite from '@/directive/read-write'
 import elemdrag from '@/directive/elem-drag'
 import limitnum from '@/directive/limit-num'
+import 'lib-flexible/flexible.js'
+import * as echarts from "echarts"; // 引入echarts
+Vue.prototype.$echarts = echarts // 挂载到vue实例，方便全局使用
+
+require('echarts/theme/macarons') // echarts theme
+import 'echarts/map/js/china.js'
+
+
 Vue.use(vab)
 Vue.use(permission)
 Vue.use(drag)
